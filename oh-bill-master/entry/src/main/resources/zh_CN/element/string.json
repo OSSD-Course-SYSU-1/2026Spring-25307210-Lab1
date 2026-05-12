@@ -1,0 +1,84 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "模块描述"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "易记账"
+    },
+    {
+      "name": "app_title",
+      "value": "易记账"
+    },
+    {
+      "name": "income",
+      "value": "收入"
+    },
+    {
+      "name": "balance",
+      "value": "支出"
+    },
+    {
+      "name": "year",
+      "value": "年"
+    },
+    {
+      "name": "month",
+      "value": "月"
+    },
+    {
+      "name": "no_record",
+      "value": "暂无数据"
+    },
+    {
+      "name": "cancel",
+      "value": "取消"
+    },
+    {
+      "name": "add_balance_remark_placeholder",
+      "value": "点击填写备注"
+    },
+    {
+      "name": "add_balance_done",
+      "value": "完成"
+    },
+    {
+      "name": "day_of_week_monday",
+      "value": "星期一"
+    },
+    {
+      "name": "day_of_week_tuesday",
+      "value": "星期二"
+    },
+    {
+      "name": "day_of_week_wednesday",
+      "value": "星期三"
+    },
+    {
+      "name": "day_of_week_thursday",
+      "value": "星期四"
+    },
+    {
+      "name": "day_of_week_friday",
+      "value": "星期五"
+    },
+    {
+      "name": "day_of_week_saturday",
+      "value": "星期六"
+    },
+    {
+      "name": "day_of_week_sunday",
+      "value": "星期日"
+    },
+    {
+      "name": "day",
+      "value": "日"
+    }
+  ]
+}
