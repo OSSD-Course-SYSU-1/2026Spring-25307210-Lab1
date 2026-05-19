@@ -16,47 +16,19 @@ export struct BalanceList {
   @Link totalIncome: number;
   context = getContext(this) as common.UIAbilityContext;
   filesDir = this.context.filesDir;
-  // calculateTotalIncomeBalance = (source: string) => {
-  //   const billingInfo = JSON.parse(source);
-  //   this.totalBalance = 0.00;
-  //   this.totalIncome = 0.00;
-  //   billingInfo.forEach(dayInfo => {
-  //     dayInfo.forEach(info => {
-  //       if (info.direction == "in") {
-  //         this.totalIncome += parseFloat(info.amount);
-  //       } else {
-  //         this.totalBalance += parseFloat(info.amount);
-  //       }
-  //     })
-  //   })
-  // }
-  // calculateSingleDayBalance = (dayInfo: any) => {
-  //   let sdTotalBalance = 0;
-  //   dayInfo.forEach(info => {
-  //     if (info.direction == "out") {
-  //       sdTotalBalance += parseFloat(info.amount);
-  //     }
-  //   })
-  //   return sdTotalBalance;
-  // }
-  // getDayOfWeek = (day: number) => {
-  //   switch (day) {
-  //     case 0:
-  //       return $r("app.string.day_of_week_sunday");
-  //     case 1:
-  //       return $r("app.string.day_of_week_monday");
-  //     case 2:
-  //       return $r("app.string.day_of_week_tuesday");
-  //     case 3:
-  //       return $r("app.string.day_of_week_wednesday");
-  //     case 4:
-  //       return $r("app.string.day_of_week_wednesday");
-  //     case 5:
-  //       return $r("app.string.day_of_week_friday");
-  //     case 6:
-  //       return $r("app.string.day_of_week_saturday");
-  //   }
-  // }
+
+  // 删除账单方法（点击后立刻从列表移除）
+  deleteBill(balance: BillingInfo) {
+    // 过滤掉要删除的账单，更新列表
+    this.currentBillingInfo = this.currentBillingInfo.filter(item => item.id !== balance.id);
+
+    // 重新计算总收入和总支出
+    this.totalIncome = 0;
+    this.totalBalance = 0;
+    this.currentBillingInfo.forEach(info => {
+      info.direction == BillingDirection.IN ? this.totalIncome += info.amount : this.totalBalance += info.amount;
+    })
+  }
 
   build() {
     Column() {
@@ -100,7 +72,21 @@ export struct BalanceList {
                             .fontSize(12)
                         }
 
-                        Text(`${balance.direction == BillingDirection.IN ? "+" : "-"} ${balance.amount}`)
+                        Row() {
+                          Text(`${balance.direction == BillingDirection.IN ? "+" : "-"} ${balance.amount}`)
+
+                          // ====================== 可点击的删除按钮 ======================
+                          Button("删除")
+                            .width(45)
+                            .height(28)
+                            .backgroundColor(Color.Red)
+                            .fontSize(11)
+                            .margin({ left: 10 })
+                            .onClick(() => {
+                              this.deleteBill(balance);
+                            })
+                          // =============================================================
+                        }
                       }
                       .width('100%')
                       .justifyContent(FlexAlign.SpaceBetween)
