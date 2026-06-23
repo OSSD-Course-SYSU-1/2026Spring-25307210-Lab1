@@ -25,33 +25,8 @@
 
 ## 📂 修改文件清单
 
-若要在你的本地仓库同步此功能，请检查并覆盖以下 3 个核心文件：
-
 | 文件路径 | 变更类型 | 核心修改点 |
 | --- | --- | --- |
 | `entry/src/main/module.json5` | **配置更新** | 增加 `tablet` 与 `2in1` 支持；为 `EntryAbility` 开启 `"continuable": true` 标签。 |
 | `entry/src/main/ets/entryability/EntryAbility.ets` | **业务重构** | 实现 `onContinue` 状态打包钩子，并在 `onCreate` 与 `onNewWant` 中捕获流转上下文，注入 `LocalStorage`。 |
 | `entry/src/main/ets/pages/Index.ets` | **UI与状态重构** | 接入 `@ohos.mediaquery` 监听断点；使用 `GridRow/GridCol` 重构 `build()` 根布局；挂载 `@LocalStorageProp` 接收并恢复日期状态。 |
-
----
-
-## 🚀 联调与测试指南
-
-### 环境要求
-
-* 两台或多台已登录**相同华为账号**的鸿蒙设备（如：一台 HarmonyOS 手机，一台 HarmonyOS 平板）。
-* 设备处于同一局域网内（连接相同的 Wi-Fi），且**蓝牙**均已开启。
-
-### 测试步骤
-
-1. 将更新后的代码编译并部署到两台设备上。
-2. 在手机端打开 oh-bill-master，在日期选择器中随意切换到一个非今天的日期。
-3. 从手机屏幕底部边缘无视差向上滑动并暂停，进入**多任务中心**。
-4. 若设备组网成功，多任务卡片上方或下方会出现**可流转的平板设备图标**。
-5. 点击该图标，应用将自动在平板端拉起，观察平板端是否成功自动切换为你刚刚在手机上选择的日期，且界面已自动转化为**左右分栏的大屏优雅布局**。
-
----
-
-## 📄 开源协议
-
-本项目的修改部分同样严格遵守 **Mulan PSL v2** 协议。欢迎提交 Pull Request 一起完善多端体验！
